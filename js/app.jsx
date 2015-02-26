@@ -5,7 +5,7 @@ var ReservationApp = React.createClass({
   render: function() {
     return (
       <div>
-        +
+        <AddReservation />
         <CalendarHeader rooms={this.props.rooms} />
       </div>
     );
@@ -19,7 +19,24 @@ var CalendarHeader = React.createClass({
     };
     return <select>{this.props.rooms.map(createOption)}</select>;
   }
-})
+});
+
+var AddReservation = React.createClass({
+  handleClick: function() {
+    console.log('Clicked!')
+  },
+
+  render: function() {
+    var styles = {
+      'margin': '20px',
+      'font-size': '20px'
+    };
+
+    var bindClick = this.handleClick.bind(this);
+
+    return <span style={styles} onClick={bindClick}>+</span>;
+  }
+});
 
 React.render(
   <ReservationApp rooms={roomsArray} />, mainContent
