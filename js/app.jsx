@@ -3,38 +3,41 @@ var mainContent = document.getElementById('content');
 var usersList = ['Janek', 'Grzegorz', 'Rafał', 'Michał'];
 
 var ReservationApp = React.createClass({
+  getInitialState: function() {
+    return {room: this.props.rooms[0]}
+  },
+
+  getCurrentRoom: function() {
+    return this.state.room;
+  },
+
+  handleUpdate: function(room) {
+    this.setState({
+      room: room
+    });
+  },
+
   render: function() {
     return (
       <div>
-        <AddReservation />
-        <CalendarHeader rooms={this.props.rooms} />
-        <CalendarContent people={this.props.people} />
+        <CalendarHeader rooms={this.props.rooms} update={this.handleUpdate} />
+        <CalendarContent people={this.props.people} getRoom={this.getCurrentRoom} />
       </div>
     );
   }
 });
 
 var CalendarHeader = React.createClass({
-  render: function() {
-    var createOption = function(option) {
-      return <option value="{option}">{option}</option>;
-    };
-    return <select ref="sel">{this.props.rooms.map(createOption)}</select>;
-  }
-});
-
-var AddReservation = React.createClass({
-  handleClick: function() {
-    console.log('Clicked!');
+  changeRoom: function () {
+    var value = this.getDOMNode().value;
+    this.props.update(value)
   },
 
   render: function() {
-    var styles = {
-      'margin': '20px',
-      'font-size': '20px'
+    var createOption = function(option) {
+      return <option value={option}>{option}</option>;
     };
-
-    return <span style={styles} onClick={this.handleClick}>+</span>;
+    return <select ref='sel' onChange={this.changeRoom}>{this.props.rooms.map(createOption)}</select>;
   }
 });
 
@@ -44,13 +47,13 @@ var UserSelectBox = React.createClass({
       return <option value={data}>{data}</option>
     };
 
-    return <select name="people">{this.props.people.map(generateSelectBox)}</select>
+    return <select name='people'>{this.props.people.map(generateSelectBox)}</select>
   }
 });
 
 var CalendarContent = React.createClass({
-  bindEvents: function() {
-
+  addReservation: function() {
+    console.log(this.props.getRoom())
   },
 
   render: function() {
@@ -58,7 +61,7 @@ var CalendarContent = React.createClass({
             <input type="datetime-local" id="reservation-start" name="reservation-start" />
             <input type="datetime-local" id="reservation-end" name="reservation-end" />
             <UserSelectBox people={this.props.people} />
-            <button id="add-reservation-btn" onClick={this.bindEvents}>add</button>
+            <button id="add-reservation-btn" onClick={this.addReservation}>add</button>
            </div>
   }
 });
