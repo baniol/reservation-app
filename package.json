@@ -1,0 +1,32 @@
+{
+  "name": "reservation-app",
+  "version": "0.0.0",
+  "description": "First ReactJS app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://baniol@github.com/baniol/reservation-app.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "projectalfa.eu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baniol/reservation-app/issues"
+  },
+  "homepage": "https://github.com/baniol/reservation-app",
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-connect": "^2.2.0",
+    "react": "^0.12.2",
+    "reactify": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^2.4.0"
+  }
+}
