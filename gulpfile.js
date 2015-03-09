@@ -5,6 +5,13 @@ var watchify = require('watchify');
 var reactify = require('reactify');
 var concat = require('gulp-concat');
 var connect = require('gulp-connect');
+var sass = require('gulp-sass');
+var watch = require('gulp-watch');
+
+function handleError(err) {
+  console.error(err.toString());
+  this.emit('end');
+}
 
 gulp.task('browserify', function() {
     var bundler = browserify({
@@ -36,4 +43,15 @@ gulp.task('connect-dev', function() {
   });
 });
 
-gulp.task('default', ['browserify', 'connect-dev']);
+gulp.task('styles',  function () {
+  return gulp.src('scss/*.scss')
+    .pipe(sass({style: 'expanded'}))
+    .on('error', handleError)
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('watch', ['styles'] ,function () {
+  gulp.watch('scss/*.scss', ['styles']);
+});
+
+gulp.task('default', ['watch', 'browserify', 'connect-dev']);
