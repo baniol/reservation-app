@@ -29,7 +29,7 @@
     font-style: italic;
   }
 .r-content {
-  display: inline-block;
+  display: flex;
   float: right;
   width: calc(100% - 50px); /* subtract scale's width */
   height: 100%;
