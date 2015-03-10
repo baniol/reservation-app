@@ -16,9 +16,10 @@ var ScheduleContent = React.createClass({
   },
 
   render: function () {
+    var self = this;
 
     var daysMapper = function (day) {
-      return <ScheduleDay name={day} />;
+      return <ScheduleDay timelineStart={self.props.start} name={day} />;
     };
 
     return (
