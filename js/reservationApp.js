@@ -2,6 +2,7 @@ var React = require('react');
 
 var CalendarHeader = require('./calendarHeader');
 var CalendarContent = require('./calendarContent');
+var Schedule = require('./schedule/schedule');
 
 var ReservationApp = React.createClass({
   getInitialState: function() {
@@ -23,6 +24,7 @@ var ReservationApp = React.createClass({
       <div>
         <CalendarHeader rooms={this.props.rooms} update={this.handleUpdate} />
         <CalendarContent people={this.props.people} getRoom={this.getCurrentRoom} />
+        <Schedule start="7" end="19" />
       </div>
     );
   }
