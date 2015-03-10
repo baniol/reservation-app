@@ -1,17 +1,24 @@
 var React = require('react');
+var ScheduleEvent = require('./event');
 
 var ScheduleDay = React.createClass({
 
   getInitialState: function () {
     return {
-      events: []
+      events: [{
+        start: '14:00',
+        end: '16:00',
+        name: 'event'
+      }]
     };
   },
 
   render: function () {
 
+    var self = this;
+
     var eventMapper = function (event) {
-      return <div className="event">{event}</div>;
+      return <ScheduleEvent timelineStart={self.props.timelineStart} data={event} />;
     };
 
     return (

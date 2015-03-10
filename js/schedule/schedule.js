@@ -4,6 +4,13 @@ var ScheduleContent = require('./content');
 
 var Schedule = React.createClass({
   
+  getInitialState: function() {
+    return {
+      start: 7,
+      end: 19
+    };
+  },
+
   render: function() {
     var height = (Math.abs( (+this.props.end) - (+this.props.start) ) + 2) * 60;
     var style = {
@@ -11,8 +18,8 @@ var Schedule = React.createClass({
     };
     return (
       <div className="r-schedule" style={style}>
-        <ScheduleScale start={this.props.start} end={this.props.end} />
-        <ScheduleContent />
+        <ScheduleScale start={this.state.start} end={this.state.end} />
+        <ScheduleContent start={this.state.start} end={this.state.end} />
       </div>
     );
   }

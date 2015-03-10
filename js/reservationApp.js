@@ -28,7 +28,7 @@ var ReservationApp = React.createClass({
       <div>
         <CalendarHeader rooms={this.props.rooms} update={this.handleUpdate} ref="CalendarHeader" />
         <CalendarContent people={this.props.people} ref="CalendarContent" addReservation={this.addReservation} />
-        <Schedule start="7" end="19" />
+        <Schedule />
       </div>
     );
   }

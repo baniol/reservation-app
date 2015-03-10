@@ -4,6 +4,7 @@ var ScheduleScale = React.createClass({
     
   getInitialState: function () {
     var hours = [];
+    var i;
     for (i = +this.props.start; i <= +this.props.end; i++) {
       hours.push(i + ':00');
     }
@@ -13,7 +14,6 @@ var ScheduleScale = React.createClass({
   },
 
   render: function () {
-    var i;
     var hoursMapper;
 
     hoursMapper = function (hour) {
