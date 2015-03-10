@@ -1,9 +1,18 @@
 var React = require('react');
 
 var CalendarHeader = React.createClass({
+  componentDidMount: function() {
+    this.setState({
+      room: this.getDOMNode().value
+    });
+  },
+
   changeRoom: function () {
     var value = this.getDOMNode().value;
-    this.props.update(value)
+    
+    this.setState({
+      room: value
+    })
   },
 
   render: function() {

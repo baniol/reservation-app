@@ -6,7 +6,7 @@ var UserSelectBox = React.createClass({
       return <option value={data}>{data}</option>
     };
 
-    return <select name='people'>{this.props.people.map(generateSelectBox)}</select>
+    return <select name='people' onChange={this.props.setPerson}>{this.props.people.map(generateSelectBox)}</select>
   }
 });
 
