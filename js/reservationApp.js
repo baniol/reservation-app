@@ -9,21 +9,25 @@ var ReservationApp = React.createClass({
     return {room: this.props.rooms[0]}
   },
 
-  getCurrentRoom: function() {
-    return this.state.room;
-  },
+  addReservation: function () {
+    var room = this.refs.CalendarHeader.state.room;
+    var person = this.refs.CalendarContent.state.person;
+    var start = this.refs.CalendarContent.state.reservationStart;
+    var end = this.refs.CalendarContent.state.reservationEnd;
 
-  handleUpdate: function(room) {
-    this.setState({
-      room: room
-    });
+    var obj = {
+      room: room,
+      person: person, 
+      start: start,
+      end: end
+    };
   },
 
   render: function() {
     return (
       <div>
-        <CalendarHeader rooms={this.props.rooms} update={this.handleUpdate} />
-        <CalendarContent people={this.props.people} getRoom={this.getCurrentRoom} />
+        <CalendarHeader rooms={this.props.rooms} update={this.handleUpdate} ref="CalendarHeader" />
+        <CalendarContent people={this.props.people} ref="CalendarContent" addReservation={this.addReservation} />
         <Schedule start="7" end="19" />
       </div>
     );
