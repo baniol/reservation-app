@@ -18,13 +18,13 @@ var ScheduleDay = React.createClass({
     var self = this;
 
     var eventMapper = function (event) {
-      return <ScheduleEvent timelineStart={self.props.timelineStart} data={event} />;
+      return <ScheduleEvent eventCollection={event} /*data={event} *//>;
     };
 
     return (
       <div className="r-day">
-        <div className="r-day-header">{this.props.name}</div>
-        <div className="r-day-events">{this.state.events.map(eventMapper)}</div>
+        <div className="r-day-header">{this.props.dayName}</div>
+        <div className="r-day-events">{this.props.timelineEvent.map(eventMapper)}</div>
       </div>
     );
   }
